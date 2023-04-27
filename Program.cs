@@ -5,6 +5,7 @@ namespace BookWishlistManager {
     internal class Program {
         // path variable
         public static string filePath = "bookList.csv";
+        public static List<Book> books = ConvertToArr(filePath);
 
         static void Main(string[] args) {
             // loop variable
@@ -28,7 +29,7 @@ namespace BookWishlistManager {
 
                 switch (menuInput) {
                     case 1:
-                        ReadFile(ConvertToArr(filePath));
+                        ReadFile(books);
                         break;
                     case 2:
                         Console.WriteLine("Update");
@@ -50,7 +51,7 @@ namespace BookWishlistManager {
         // read methods
         static List<Book> ConvertToArr(string path) {
             var lines = File.ReadAllLines(path);
-            var books = new List<Book>();
+            var localBooks = new List<Book>();
 
             foreach (var line in lines) {
                 var components = line.Split(',');
@@ -59,9 +60,9 @@ namespace BookWishlistManager {
                     price = Convert.ToInt32(components[1]),
                     owned = Convert.ToBoolean(components[2]),
                 };
-                books.Add(book);
+                localBooks.Add(book);
             }
-            return books;
+            return localBooks;
         }
 
         static void ReadFile(List<Book> books) {
@@ -71,6 +72,15 @@ namespace BookWishlistManager {
                 book.PrintComponents();
             }
             Console.WriteLine();
+        }
+
+        // update methods
+        static int GetLineIndex() {
+            int lineIndex;
+
+            Console.WriteLine("Masukkan nomor baris:");
+            lineIndex = Convert.ToInt32(Console.ReadLine())-1;
+            return lineIndex;
         }
 
         // write methods
