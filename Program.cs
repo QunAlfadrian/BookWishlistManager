@@ -32,8 +32,7 @@ namespace BookWishlistManager {
                         ReadFile(books);
                         break;
                     case 2:
-                        Console.WriteLine(GetLineIndex());
-                        Console.WriteLine(SelectAttribute());
+                        Console.WriteLine("Update");
                         break;
                     case 3:
                         AddEntry();
@@ -82,21 +81,6 @@ namespace BookWishlistManager {
             Console.WriteLine("Masukkan nomor baris:");
             lineIndex = Convert.ToInt32(Console.ReadLine()) - 1;
             return lineIndex;
-        }
-
-        static int SelectAttribute() {
-            int menuInput;
-
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("Pilih atribut yang diedit:");
-            Console.WriteLine(" <1> Judul");
-            Console.WriteLine(" <2> Harga");
-            Console.WriteLine(" <3> Status Kepemilikan");
-            Console.WriteLine(" <4> Batal");
-
-            menuInput = Convert.ToInt32((Console.ReadLine()));
-
-            return menuInput;
         }
 
         // write methods

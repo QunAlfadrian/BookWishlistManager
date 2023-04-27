@@ -13,7 +13,7 @@ namespace BookWishlistManager {
         public void PrintComponents() {
             if (title.Length <= 7) {
                 Console.WriteLine("{0}\t\t\t\t{1}\t\t{2}", title, price, owned);
-            } else if (title.Length > 7 && title.Length <= 14) {
+            } else if (title.Length > 7 && title.Length <= 15) {
                 Console.WriteLine("{0}\t\t\t{1}\t\t{2}", title, price, owned);
             } else {
                 Console.WriteLine("{0}\t\t{1}\t\t{2}", title, price, owned);
