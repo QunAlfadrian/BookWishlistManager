@@ -4,21 +4,25 @@ using System.IO;
 namespace BookWishlistManager {
     internal class Program {
         // path variable
-        public static string filePath = @"C:\Users\PAVILION GAMING\Documents\Book Saves\books.csv";
+        public static string FilePath = @"C:\Users\PAVILION GAMING\Documents\Book Saves\books.csv";
+        public static FileWriter Writer = new FileWriter();
+        public static Book Book = new Book();
 
         static void Main(string[] args) {
-            if (!File.Exists(filePath)) {
-                using (StreamWriter sw = File.CreateText(filePath)) { }
-            }
+            CreateFile(FilePath);
 
-            var addLines = new List<string>();
-            addLines.Add("Silence,Akiyoshi Rikako,J-Lit");
+            Writer.NewLine(FilePath);
 
-            File.AppendAllLines(filePath, addLines);
-            var lines = File.ReadAllLines(filePath);
+            var lines = File.ReadAllLines(FilePath);
             
             foreach (var line in lines) {
                 Console.WriteLine(line);
+            }
+        }
+
+        static void CreateFile(string filePath) {
+            if (!File.Exists(filePath)) {
+                using (StreamWriter create = File.CreateText(filePath)) { }
             }
         }
     }
