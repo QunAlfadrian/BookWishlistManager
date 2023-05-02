@@ -5,13 +5,13 @@ namespace BookWishlistManager {
     internal class Program {
         // path variable
         public static string FilePath = @"C:\Users\PAVILION GAMING\Documents\Book Saves\books.csv";
-        public static FileWriter Writer = new FileWriter();
-        public static Book Book = new Book();
+        public static FileWriter writer = new FileWriter();
+        public static Book book = new Book();
 
         static void Main(string[] args) {
             CreateFile(FilePath);
 
-            Writer.NewLine(FilePath);
+            writer.LineList(FilePath);
 
             var lines = File.ReadAllLines(FilePath);
             

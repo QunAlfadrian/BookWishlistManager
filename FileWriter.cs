@@ -6,15 +6,37 @@ using System.Threading.Tasks;
 using System.IO;
 
 namespace BookWishlistManager {
-    public class FileWriter {
-        public void NewLine(string filePath) {
-            var addLines = new List<string>();
+    internal class FileWriter {
+
+        private string NewLine() {
+            /// <summary>
+            /// Method <c>Input</c> takes user input and returns it as string.
+            /// </summary>
             string userInput;
 
-            userInput = Convert.ToString(Console.ReadLine());
-            addLines.Add(userInput);
+            userInput = Console.ReadLine();
+            return userInput;
+        }
 
-            Console.WriteLine(addLines[0]);
+        public void LineList(string filePath) {
+            /// <summary>
+            /// Method <c>NewLine</c> create a list of <c>Input</c>
+            /// </summary>
+            var lines = new List<string>();
+            bool active = true;
+            string text;
+
+            while (active) {
+                Console.Write("\n  Masukkan Entry\n\t");
+                text = NewLine();
+                lines.Add(text);
+
+                if (lines.Count() == 2) { active = false; }
+            }
+
+            foreach (string line in lines) {
+                Console.WriteLine(line);
+            }
         }
     }
 }
