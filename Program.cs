@@ -12,7 +12,7 @@ namespace BookWishlistManager {
             CreateFile(FilePath);
 
             var lineList = writer.LineList(FilePath);
-            writer.WriteLines(FilePath, lineList);
+            writer.AppendLines(FilePath, lineList);
 
             var lines = File.ReadAllLines(FilePath);
             

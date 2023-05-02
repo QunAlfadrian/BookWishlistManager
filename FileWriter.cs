@@ -40,5 +40,9 @@ namespace BookWishlistManager {
         public void WriteLines(string filePath, List<string> lines) {
             File.WriteAllLines(filePath, lines);
         }
+
+        public void AppendLines(string filePath, List<string> lines) {
+            File.AppendAllLines(filePath, lines);
+        }
     }
 }
