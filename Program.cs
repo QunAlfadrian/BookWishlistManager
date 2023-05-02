@@ -11,7 +11,8 @@ namespace BookWishlistManager {
         static void Main(string[] args) {
             CreateFile(FilePath);
 
-            writer.LineList(FilePath);
+            var lineList = writer.LineList(FilePath);
+            writer.WriteLines(FilePath, lineList);
 
             var lines = File.ReadAllLines(FilePath);
             

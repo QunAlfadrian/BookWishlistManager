@@ -18,7 +18,7 @@ namespace BookWishlistManager {
             return userInput;
         }
 
-        public void LineList(string filePath) {
+        public List<string> LineList(string filePath) {
             /// <summary>
             /// Method <c>NewLine</c> create a list of <c>Input</c>
             /// </summary>
@@ -34,9 +34,11 @@ namespace BookWishlistManager {
                 if (lines.Count() == 2) { active = false; }
             }
 
-            foreach (string line in lines) {
-                Console.WriteLine(line);
-            }
+            return lines;
+        }
+
+        public void WriteLines(string filePath, List<string> lines) {
+            File.WriteAllLines(filePath, lines);
         }
     }
 }
