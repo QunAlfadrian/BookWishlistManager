@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace BookWishlistManager {
     public class Book {
-        public string title { get; set; }
-        public int price { get; set; }
-        public bool owned { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public int Price { get; set; }
+        public bool Status { get; set; }
 
         public void PrintComponents() {
-            if (title.Length <= 7) {
-                Console.WriteLine("{0}\t\t\t\t{1}\t\t{2}", title, price, owned);
-            } else if (title.Length > 7 && title.Length <= 15) {
-                Console.WriteLine("{0}\t\t\t{1}\t\t{2}", title, price, owned);
+            if (Title.Length <= 7) {
+                Console.WriteLine("{0}\t\t\t\t{1}\t\t{2}", Title, Price, Status);
+            } else if (Title.Length > 7 && Title.Length <= 15) {
+                Console.WriteLine("{0}\t\t\t{1}\t\t{2}", Title, Price, Status);
             } else {
-                Console.WriteLine("{0}\t\t{1}\t\t{2}", title, price, owned);
+                Console.WriteLine("{0}\t\t{1}\t\t{2}", Title, Price, Status);
             }
         }
     }
