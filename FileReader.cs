@@ -4,28 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookWishlistManager {
 
     internal class FileReader {
         string FilePath = @"C:\Users\PAVILION GAMING\Documents\Book Saves\books.csv";
-        public string[] ReadToArray(string filePath) {
+        private string[] ReadToArray(string filePath) {
             string[] lines;
 
             lines = File.ReadAllLines(filePath);
             return lines;
         }
 
-        public List<Book> CreateBookList(string filePath, string[] lineArray) {
+        private Book CreateBook(string line) {
+            Book book = new Book();
+            string[] lineWords;
+
+            lineWords = line.Split(',');
+            book.Title = lineWords[0];
+            book.Price = Convert.ToInt32(lineWords[1]);
+            book.Status = Convert.ToBoolean(lineWords[2]);
+            return book;
+        }
+
+        public List<Book> CreateBookList(string filePath) {
             var books = new List<Book>();
+            string[] lineArray = ReadToArray(filePath);
             string[] lineWords;
 
             foreach (string line in lineArray) {
-                Book book = new Book();
-                lineWords = line.Split(',');
-                book.Title = lineWords[0];
-                book.Price = Convert.ToInt32(lineWords[1]);
-                book.Status = Convert.ToBoolean(lineWords[2]);
+                Book book = CreateBook(line);
                 books.Add(book);
             }
 

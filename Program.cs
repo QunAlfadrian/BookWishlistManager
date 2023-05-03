@@ -12,13 +12,11 @@ namespace BookWishlistManager {
         static void Main(string[] args) {
             CreateFile(FilePath);
 
-            //var lineList = writer.LineList(FilePath);
-            //writer.WriteLines(FilePath, lineList);
-
-            string[] lines = reader.ReadToArray(FilePath);
+            var lineList = writer.LineList(FilePath);
+            writer.AppendLines(FilePath, lineList);
 
             List<Book> books = new List<Book>();
-            books = reader.CreateBookList(FilePath, lines);
+            books = reader.CreateBookList(FilePath);
             
             foreach (var book in books) {
                 book.PrintComponents();
